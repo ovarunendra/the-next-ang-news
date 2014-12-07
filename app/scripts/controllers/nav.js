@@ -7,9 +7,6 @@ app.controller('NavCtrl', function ($scope, $location, Post, Auth) {
     $scope.user = Auth.user;
 
     $scope.submitPost = function () {
-        if($scope.post.title === ''){
-            return;
-        }
         $scope.post.creator = $scope.user.profile.username;
         $scope.post.creatorUID = $scope.user.uid;
         Post.create($scope.post).then(function (ref) {
