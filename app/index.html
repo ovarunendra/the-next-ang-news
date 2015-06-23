@@ -23,6 +23,14 @@
     <!-- Add your site or application content here -->
     <div ng-include="'views/nav.html'"></div>
     <div class="container" ng-view=""></div>
+    <div ng-controller="MapController as mapCtrl">
+        <script type="text/ng-template" id="searchbox.tpl.html">
+            <input type="text" placeholder="Search Box">
+        </script>
+        <ui-gmap-google-map center='mapCtrl.map.center' zoom='mapCtrl.map.zoom' draggable="true" options="mapCtrl.options">
+            <ui-gmap-search-box template="mapCtrl.searchbox.template" events="mapCtrl.searchbox.events"></ui-gmap-search-box>
+        </ui-gmap-google-map>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -59,6 +67,8 @@
     <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -73,6 +83,7 @@
         <script src="scripts/controllers/nav.js"></script>
         <script src="scripts/controllers/auth.js"></script>
         <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/map.js"></script>
         <!-- endbuild -->
 </body>
 </html>

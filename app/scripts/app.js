@@ -19,7 +19,8 @@ var app = angular
         'ngSanitize',
         'ngTouch',
         'firebase',
-        'pascalprecht.translate'
+        'pascalprecht.translate',
+        'uiGmapgoogle-maps'
     ])
     .constant('FIREBASE_URL', 'https://thenextangnewsapp.firebaseio.com/');
 app.config(function ($translateProvider) {
@@ -39,6 +40,14 @@ app.config(function ($translateProvider) {
     });
     $translateProvider.preferredLanguage('en');
 });
+app.config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
+
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyByVjhZFuTLOsyItOpPjsZIEJOsv7QyGKI',
+        v: '3.20',
+        libraries: 'weather,geometry,visualization,places'
+    });
+}]);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
